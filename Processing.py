@@ -16,6 +16,8 @@ def correlate(s1,s2):
     corr_coef=corr_matt[0,1]
     print(abs(corr_coef))
 
+
+#TODO: remove this as well
 signal=wavread("samples/bass1.wav")
 signal2=wavread("samples/bass2.wav")
 correlate(signal,signal2)
