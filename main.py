@@ -1,3 +1,4 @@
+from tkinter import Tk,font
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 import tkinter as tk
@@ -5,12 +6,18 @@ import button_row as bt
 import wave
 import numpy as np
 
+
 class App:
 
     def __init__(self, root):
-        self.f = Figure(figsize=(8, 5))
+        self.f = Figure(figsize=(10, 4))
         self.a = self.f.add_subplot(111)
         self.canvas = FigureCanvasTkAgg(self.f, root)
+
+        #title
+        title=tk.Label(height=1,text="TableDrummer",bg='white',fg='darkblue')
+        title.configure(relief=tk.FLAT,font='Times 28 bold italic',width=15,)
+        title.pack()
 
 
         # upper row of buttons
