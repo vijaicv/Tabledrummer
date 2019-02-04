@@ -16,17 +16,14 @@ def wavread(filename):
 
 def graphplot(root):
     soundwave = wavread('samples/bass1.wav')
-    f = Figure(figsize=(6, 6))
+    f = Figure(figsize=(8, 5))
     a = f.add_subplot(111)
     a.plot(soundwave)
     canvas = FigureCanvasTkAgg(f, root)
     return canvas
 
 
-# frame1= tk.Frame(root)
-# from button_row import *
-# b1.pack(side = LEFT)
-# frame1.pack()
+
 
 
 
