@@ -1,10 +1,14 @@
 from graph_display import *
 import tkinter as tk
+from button_row import *
 
 
 root=tk.Tk()
 root.configure(bg="white")
 
+
+frame1=framereturn(root)
+frame1.pack()
 canvas=graphplot(root)
 canvas.get_tk_widget().pack()
 canvas.draw()
