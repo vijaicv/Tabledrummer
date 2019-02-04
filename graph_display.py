@@ -1,3 +1,4 @@
+from button_row import *
 import tkinter as tk
 import matplotlib
 matplotlib.use('TkAgg')
@@ -28,6 +29,7 @@ a=f.add_subplot(111)
 a.plot(soundwave)
 
 
+b1.pack(side = LEFT)
 
 
 canvas = FigureCanvasTkAgg(f,root)
