@@ -7,7 +7,11 @@ import wave
 import numpy as np
 
 
+root = tk.Tk()
+
 class App:
+
+    buttons=["KICK","SNARE" ,"HI-HAT"]
 
     def __init__(self, root):
         self.f = Figure(figsize=(10, 4))
@@ -21,8 +25,8 @@ class App:
 
 
         # upper row of buttons
-        frame1 = bt.framereturn(root,self,self.graphupdate)
-        frame1.pack()
+        self.frame1 = bt.framereturn(root,self)
+        self.frame1.pack()
         # ------------------------
 
         # graph
@@ -31,7 +35,7 @@ class App:
         # ---------------------------
 
         # bottom row of buttons
-        bottomframe = bt.bottomframe(root)
+        bottomframe = bt.bottomframe(root,self)
         bottomframe.pack()
         # ----------------------------
 
@@ -41,6 +45,11 @@ class App:
         exit_button.pack()
         # ----------------------------
         root.mainloop()
+
+    def callback(self,selection):
+        if selection=="TABALA":
+            self.instrumentupdate(1)
+        print(selection)
 
     def wavread(self,filename):
         wavefile = wave.open(filename, 'r')
@@ -67,6 +76,14 @@ class App:
         self.a.plot(soundwave)
         self.canvas.draw()
 
+    def instrumentupdate(self,inst_n):
+        if inst_n==1:
+            self.buttons=["LEFT" , "RIGHT", "RIM"]
+            self.frame1.pack_forget()
+            self.frame1=bt.framereturn(root,self)
+            self.frame1.pack()
+
+
 # tkinter window config
 def kr(event):
     print("esc")
@@ -74,8 +91,8 @@ def kr(event):
         exit(0)
 
 
-root = tk.Tk()
-root.attributes('-fullscreen',True)
+
+# root.attributes('-fullscreen',True)
 root.configure(bg="white")  # window colour
 root.configure(padx=30, pady=30)
 root.title('Tabledrummer')
