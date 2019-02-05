@@ -27,6 +27,7 @@ class App:
         # upper row of buttons
         self.frame1 = bt.framereturn(root,self)
         self.frame1.pack()
+        self.frame1.place(relx=.32, rely=.1)
         # ------------------------
 
         # graph
@@ -82,6 +83,7 @@ class App:
             self.frame1.pack_forget()
             self.frame1=bt.framereturn(root,self)
             self.frame1.pack()
+            self.frame1.place( relx=.32, rely=.1)
 
 
 # tkinter window config
