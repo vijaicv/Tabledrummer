@@ -50,7 +50,9 @@ class App:
     def callback(self,selection):
         if selection=="TABALA":
             self.instrumentupdate(1)
-        print(selection)
+        elif selection=="JAZZ":
+            self.instrumentupdate(2)
+
 
     def wavread(self,filename):
         wavefile = wave.open(filename, 'r')
@@ -84,6 +86,12 @@ class App:
             self.frame1=bt.framereturn(root,self)
             self.frame1.pack()
             self.frame1.place( relx=.32, rely=.1)
+        elif inst_n==2:
+            self.buttons = ["KICK","SNARE" ,"HI-HAT"]
+            self.frame1.pack_forget()
+            self.frame1 = bt.framereturn(root, self)
+            self.frame1.pack()
+            self.frame1.place(relx=.32, rely=.1)
 
 
 # tkinter window config
