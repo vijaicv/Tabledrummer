@@ -21,7 +21,7 @@ class App:
 
 
         # upper row of buttons
-        frame1 = bt.framereturn(root,self.graphupdate)
+        frame1 = bt.framereturn(root,self,self.graphupdate)
         frame1.pack()
         # ------------------------
 
