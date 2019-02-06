@@ -38,4 +38,3 @@ class b_row:
 
 
 
-
