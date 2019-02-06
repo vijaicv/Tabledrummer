@@ -5,7 +5,7 @@ import tkinter as tk
 from button_row import *
 import wave
 import numpy as np
-
+from sound_play import *
 
 root = tk.Tk()
 
@@ -72,6 +72,7 @@ class App:
         if(self.inst==1):self.instrument=self.jazz
         else:self.instrument=self.tabla
         self.soundwave = self.wavread(self.instrument[s_wave])
+        play(self.instrument[s_wave])
         self.a.clear()
         self.a.plot(self.soundwave)
         self.canvas.draw()
