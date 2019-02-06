@@ -21,28 +21,23 @@ import sys
 #         # writing to the stream is what *actually* plays the sound.
 #         stream.write(data)
 #         data = wf.readframes(chunk)
-CHUNK = 1024
-wf = wave.open("/home/demihuman/Documents/project/Tabledrummer/samples/wet hat1.wav",'rb')
-p = pyaudio.PyAudio()
-stream= p.open(format=p.get_format_from_width(wf.getsampwidth()),channels=wf.getnchannels(),rate=wf.getframerate(),output=True)
-data=wf.readframes(CHUNK)
 
-while len(data)>0:
-   stream.write(data)
-   data=wf.readframes(CHUNK)
+def play(s):
+    CHUNK = 1024
+    wf = wave.open(s, 'rb')
+    p = pyaudio.PyAudio()
+    stream = p.open(format=p.get_format_from_width(wf.getsampwidth()), channels=wf.getnchannels(),
+                    rate=wf.getframerate(), output=True)
+    data = wf.readframes(CHUNK)
 
-stream.stop_stream()
-stream.close()
+    while len(data) > 0:
+        stream.write(data)
+        data = wf.readframes(CHUNK)
+    stream.stop_stream()
+    stream.close()
+    p.terminate
 
-p.terminate
 
-# def play(s):
-#     if(s=="snare"):
-#         print("snare")
-#     elif(s=="kick"):
-#         print("kick")
-#     elif(s=="hat"):
-#         print("haaat")
-#
-#
-# play("mat")
+
+
+play("mat")
