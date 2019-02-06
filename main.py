@@ -66,17 +66,17 @@ class App:
         self.canvas.draw()
 
     def graphupdate(self,s_wave):
-        self.a.clear()
-        soundwave = self.wavread('samples/bass1.wav')
+        print(s_wave)
         if(s_wave==0):
-            soundwave = self.wavread('samples/bass1.wav')
+            self.soundwave = self.wavread('samples/bass1.wav')
         elif (s_wave == 1):
-            soundwave = self.wavread('samples/bass2.wav')
+            self.soundwave = self.wavread('samples/bass2.wav')
         elif (s_wave == 2):
-            soundwave = self.wavread('samples/snr1.wav')
+            self.soundwave = self.wavread('samples/snr1.wav')
         elif (s_wave == 3):
-            soundwave = self.wavread('samples/snr2.wav')
-        self.a.plot(soundwave)
+            self.soundwave = self.wavread('samples/snr2.wav')
+        self.a.clear()
+        self.a.plot(self.soundwave)
         self.canvas.draw()
 
     def instrumentupdate(self,inst_n):

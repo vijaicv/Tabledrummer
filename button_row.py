@@ -8,9 +8,9 @@ def framereturn(root, self):
     frame1 = Frame(root)
     frame1.config(bg="white")
     i=0
-    while i<len(btns):
-        b1 = Button(frame1, text=btns[i], width=10, font="sans 10 bold", command=lambda: self.graphupdate(i))
-        b1.pack(side=LEFT,padx=10)
+    while i<3:
+        b=Button(frame1, text=btns[i], width=10, font="sans 10 bold", command=lambda i=i:self.graphupdate(i))
+        b.pack(side=LEFT,padx=10)
         i+=1
     return frame1
 
