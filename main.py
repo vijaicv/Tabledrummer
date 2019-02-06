@@ -2,7 +2,7 @@ from tkinter import Tk,font
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 import tkinter as tk
-import button_row as bt
+from button_row import *
 import wave
 import numpy as np
 
@@ -10,8 +10,10 @@ import numpy as np
 root = tk.Tk()
 
 class App:
-
+    inst=1
     buttons=["KICK","SNARE" ,"HI-HAT"]
+    jazz=["samples/bass1.wav","samples/bass2.wav","samples/snr1.wav","samples/snr2.wav"]
+    tabla=["samples/bass2.wav","samples/bass1.wav","samples/snr2.wav","samples/snr1.wav"]
 
     def __init__(self, root):
         self.f = Figure(figsize=(10, 4))
@@ -23,9 +25,9 @@ class App:
         title.configure(relief=tk.FLAT,font='Times 28 bold italic',width=15,)
         title.pack()
 
-
+        self.bt=b_row()
         # upper row of buttons
-        self.frame1 = bt.framereturn(root,self)
+        self.frame1 = self.bt.framereturn(root,self)
         self.frame1.pack()
         self.frame1.place(relx=.32, rely=.1)
         # ------------------------
@@ -36,7 +38,7 @@ class App:
         # ---------------------------
 
         # bottom row of buttons
-        bottomframe = bt.bottomframe(root,self)
+        bottomframe = self.bt.bottomframe(root,self)
         bottomframe.pack()
         # ----------------------------
 
@@ -67,29 +69,26 @@ class App:
 
     def graphupdate(self,s_wave):
         print(s_wave)
-        if(s_wave==0):
-            self.soundwave = self.wavread('samples/bass1.wav')
-        elif (s_wave == 1):
-            self.soundwave = self.wavread('samples/bass2.wav')
-        elif (s_wave == 2):
-            self.soundwave = self.wavread('samples/snr1.wav')
-        elif (s_wave == 3):
-            self.soundwave = self.wavread('samples/snr2.wav')
+        if(self.inst==1):self.instrument=self.jazz
+        else:self.instrument=self.tabla
+        self.soundwave = self.wavread(self.instrument[s_wave])
         self.a.clear()
         self.a.plot(self.soundwave)
         self.canvas.draw()
 
     def instrumentupdate(self,inst_n):
         if inst_n==1:
+            self.inst=1
             self.buttons=["LEFT" , "RIGHT", "RIM"]
             self.frame1.pack_forget()
-            self.frame1=bt.framereturn(root,self)
+            self.frame1=self.bt.framereturn(root,self)
             self.frame1.pack()
             self.frame1.place( relx=.32, rely=.1)
         elif inst_n==2:
+            self.inst=2
             self.buttons = ["KICK","SNARE" ,"HI-HAT"]
             self.frame1.pack_forget()
-            self.frame1 = bt.framereturn(root, self)
+            self.frame1 = self.bt.framereturn(root, self)
             self.frame1.pack()
             self.frame1.place(relx=.32, rely=.1)
 
