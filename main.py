@@ -101,7 +101,7 @@ def kr(event):
 
 
 
-# root.attributes('-fullscreen',True)
+root.attributes('-fullscreen',True)
 root.configure(bg="white")  # window colour
 root.configure(padx=30, pady=30)
 root.title('Tabledrummer')

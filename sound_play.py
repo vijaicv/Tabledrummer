@@ -38,6 +38,3 @@ def play(s):
     p.terminate
 
 
-
-
-play("mat")
