@@ -5,12 +5,13 @@ from tkinter import *
 
 class b_row:
     def framereturn(s,root, self):
-        btns = self.buttons
+        btns = self.button_labels
         frame1 = Frame(root)
         frame1.config(bg="white")
         i = 0
+
         while i < 3:
-            b = Button(frame1, text=btns[i], width=10, font="sans 10 bold", command=lambda i=i: self.graphupdate(i))
+            b = Button(frame1, text=btns[i], width=10, font="sans 10 bold", command=lambda i=i: self.graphupdate(i),)
             b.pack(side=LEFT, padx=10)
             i += 1
         return frame1
@@ -56,6 +57,9 @@ class b_row:
         exit_button.pack(side=RIGHT)
 
         return bframe
+
+
+
 
 
 
