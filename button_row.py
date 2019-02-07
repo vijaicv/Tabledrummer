@@ -39,7 +39,7 @@ class b_row:
         instrument = OptionMenu(tframe, b1, *optionList, command=self.callback)
         instrument.configure(width=10, relief=FLAT, bg='yellow', fg='black', font=('helvetica', 10, 'bold'), activebackground='pale green')
         instrument.pack(side=RIGHT,padx=10)
-        tframe.pack(pady=10)
+        tframe.pack(pady=5)
 
         #bottom of bottom frame
         subframe=Frame(bframe)
@@ -47,12 +47,12 @@ class b_row:
         b3 = Button(subframe, text='RE-MAP', bg='blue', fg='white', font='sans 10 bold')
         b3.config(bd=4, relief=RAISED, activebackground="darkblue",width=8)
         b3.pack(side=LEFT)
-        b2 = Button(subframe, text="RESET",bg='tomato')
+        b2 = Button(subframe, text="RESET",bg='tomato',font='sans 10 bold')
         b2.config(bd=4, relief=RAISED,width=8)
         b2.pack(side=LEFT,padx=30)
         subframe.pack(pady=5)
         # Exit button
-        exit_button = Button(subframe, text='Exit', command=quit, bg='darkred', fg='white', padx=15, pady=5)
+        exit_button = Button(subframe, text='Exit', command=quit, bg='darkred', fg='white', padx=15, pady=5,font='sans 10 bold')
         exit_button.configure(bd=4, relief=RAISED, activebackground='red', activeforeground='white',width=8)
         exit_button.pack(side=RIGHT)
 
