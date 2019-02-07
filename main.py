@@ -44,7 +44,6 @@ class App:
         bottomframe = self.bt.bottomframe(root,self)
         bottomframe.pack()
         # ----------------------------
-
         root.mainloop()
 
     def callback(self,selection):
