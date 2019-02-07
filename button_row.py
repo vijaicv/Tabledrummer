@@ -50,7 +50,7 @@ class b_row:
         b2 = Button(subframe, text="RESET",bg='tomato')
         b2.config(bd=4, relief=RAISED,width=8)
         b2.pack(side=LEFT,padx=30)
-        subframe.pack(pady=10)
+        subframe.pack(pady=5)
         # Exit button
         exit_button = Button(subframe, text='Exit', command=quit, bg='darkred', fg='white', padx=15, pady=5)
         exit_button.configure(bd=4, relief=RAISED, activebackground='red', activeforeground='white',width=8)
