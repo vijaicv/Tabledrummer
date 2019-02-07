@@ -106,7 +106,7 @@ class App:
                 child.config(bg="dark orchid",fg="white",width=8,height=1,bd=2)
 
 
-# tkinter window config
+
 def kr(event):
     print("esc")
     if (event.keysym == 'Escape'):
