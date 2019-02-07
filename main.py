@@ -45,11 +45,6 @@ class App:
         bottomframe.pack()
         # ----------------------------
 
-        # Exit button
-        exit_button = tk.Button(root, text='Exit', command=lambda : self.buttonglow(), bg='darkred', fg='white', padx=15, pady=5)
-        exit_button.configure(bd=4, relief=tk.RAISED, activebackground='red', activeforeground='white')
-        exit_button.pack()
-        # ----------------------------
         root.mainloop()
 
     def callback(self,selection):
