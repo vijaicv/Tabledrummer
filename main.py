@@ -1,3 +1,4 @@
+import random
 from tkinter import Tk,font
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
@@ -11,9 +12,10 @@ root = tk.Tk()
 
 class App:
     inst=1
-    buttons=["KICK","SNARE" ,"HI-HAT"]
-    jazz=["samples/bass1.wav","samples/bass2.wav","samples/snr1.wav","samples/snr2.wav"]
+    button_labels=["KICK", "SNARE" , "HI-HAT"]
+    jazz=["samples/bass1.wav","samples/snare.wav","samples/hat.wav"]
     tabla=["samples/bass2.wav","samples/bass1.wav","samples/snr2.wav","samples/snr1.wav"]
+    buttons=[]
 
     def __init__(self, root):
         self.f = Figure(figsize=(10, 4))
@@ -28,6 +30,7 @@ class App:
         self.bt=b_row()
         # upper row of buttons
         self.frame1 = self.bt.framereturn(root,self)
+        self.buttons=self.frame1.winfo_children()
         self.frame1.pack()
         self.frame1.place(relx=.32, rely=.1)
         # ------------------------
@@ -43,7 +46,7 @@ class App:
         # ----------------------------
 
         # Exit button
-        exit_button = tk.Button(root, text='Exit', command=quit, bg='darkred', fg='white', padx=15, pady=5)
+        exit_button = tk.Button(root, text='Exit', command=lambda : self.buttonglow(), bg='darkred', fg='white', padx=15, pady=5)
         exit_button.configure(bd=4, relief=tk.RAISED, activebackground='red', activeforeground='white')
         exit_button.pack()
         # ----------------------------
@@ -80,18 +83,27 @@ class App:
     def instrumentupdate(self,inst_n):
         if inst_n==1:
             self.inst=1
-            self.buttons=["LEFT" , "RIGHT", "RIM"]
+            self.button_labels=["LEFT" , "RIGHT", "RIM"]
             self.frame1.pack_forget()
             self.frame1=self.bt.framereturn(root,self)
             self.frame1.pack()
             self.frame1.place( relx=.32, rely=.1)
         elif inst_n==2:
             self.inst=2
-            self.buttons = ["KICK","SNARE" ,"HI-HAT"]
+            self.button_labels = ["KICK", "SNARE" , "HI-HAT"]
             self.frame1.pack_forget()
             self.frame1 = self.bt.framereturn(root, self)
             self.frame1.pack()
             self.frame1.place(relx=.32, rely=.1)
+
+    def buttonglow(self):
+        b_num=random.choice([0,1,2])
+        print(b_num)
+        for index,child in enumerate(self.buttons):
+            if index==b_num:
+                child.config(bg="orange red",fg="white",width=10,height=2,relief=RAISED,bd=4)
+            else:
+                child.config(bg="dark orchid",fg="white",width=8,height=1,bd=2)
 
 
 # tkinter window config
@@ -102,7 +114,7 @@ def kr(event):
 
 
 
-root.attributes('-fullscreen',True)
+# root.attributes('-fullscreen',True)
 root.configure(bg="white")  # window colour
 root.configure(padx=30, pady=30)
 root.title('Tabledrummer')
